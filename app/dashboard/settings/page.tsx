@@ -21,6 +21,7 @@ import { useFreighter } from "@/hooks/use-freighter";
 import { Copy, Wallet, Layers } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { AccountProfileCard } from "@/components/dashboard/settings/AccountProfileCard";
+import { NotificationsCard } from "@/components/dashboard/settings/NotificationsCard";
 
 export default function SettingsPage() {
   const { publicKey, connect, disconnect, isConnecting } = useFreighter();
@@ -58,9 +59,18 @@ export default function SettingsPage() {
           Manage your account settings and preferences
         </p>
       </div>
-
-      {/* Account Profile Section */}
-      <AccountProfileCard />
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* AccountProfileCard takes 2/3 of the space */}
+      <div className="lg:col-span-2">
+        <AccountProfileCard />
+      </div>
+ 
+      {/* NotificationsCard takes 1/3 of the space */}
+      <div className="lg:col-span-1">
+        <NotificationsCard />
+      </div>
+    </div>
+     
 
       {/* Wallet Connection Section */}
       <Card className="bg-slate-900/50 border-slate-800">
